@@ -1,0 +1,17 @@
+Yeah, lets has a simpler script and then we will move on to the harder ones. This is a badge script, as you should know if you can read and this rewards game badges you've created
+into a robloxian's profile.
+
+I suggest you get a PC or Laptop for this to work and open Roblox Studio to get started, or you can test this script on a Roblox Baseplate Template or whatever
+you want to do.
+
+SCRIPT UNDER THIS:
+
+local badgeservice = game.GetService("BadgeService")
+local id = (Put your badge ID here and remove this in studio)
+script.Parent.Touched:Connect (function(hit)
+
+       if.HitParent:FindFirstChild("Humanoid") then
+            local plr = game.Players:GetPlayerFromCharacter (hit.Parent)
+            badgeservice:AwardBadge (plr.UserId, id)
+      end
+  end)
