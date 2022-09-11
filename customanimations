@@ -1,0 +1,29 @@
+You need to make a script in Roblox Studio and then paste this in it for custom animations that you made or somebody else made!
+
+local Players = game:GetService("Players")
+
+local function onCharacterAdded(character)
+	local humanoid = character:WaitForChild("Humanoid")
+	local animator = humanoid:WaitForChild("Animator")
+
+	for _, track in pairs(animator:GetPlayingAnimationTracks()) do
+		track:Stop(0)
+	end
+
+	local animateScript = character:WaitForChild("Animate")
+	animateScript.run.RunAnim.AnimationId = "rbxassetid://(PasteAnimID)"        -- Run
+	animateScript.walk.WalkAnim.AnimationId = "rbxassetid://(PasteAnimID)"      -- Walk
+	animateScript.jump.JumpAnim.AnimationId = "rbxassetid://(PasteAnimID)"      -- Jump
+	animateScript.idle.Animation1.AnimationId = "rbxassetid://(PasteAnimID)"    -- Idle (Variation 1)
+	animateScript.idle.Animation2.AnimationId = "rbxassetid://(PasteAnimID)"    -- Idle (Variation 2)
+	animateScript.fall.FallAnim.AnimationId = "rbxassetid://(PasteAnimID)"      -- Fall
+	animateScript.swim.Swim.AnimationId = "rbxassetid://(PasteAnimID)"          -- Swim (Active)
+	animateScript.swimidle.SwimIdle.AnimationId = "rbxassetid://(PasteAnimID)"  -- Swim (Idle)
+	animateScript.climb.ClimbAnim.AnimationId = "rbxassetid://(PasteAnimID)"    -- Climb
+end
+
+local function onPlayerAdded(player)
+	player.CharacterAppearanceLoaded:Connect(onCharacterAdded)
+end
+
+Players.PlayerAdded:Connect(onPlayerAdded)
